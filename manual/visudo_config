@@ -1,3 +1,0 @@
-# to support apache user(www-data) to run scripts with root permtions I needs to add below lines to visudo
-ALL ALL=NOPASSWD: /target/BCF_FILES_FOR_NEW_ENC/00/installer
-#www-data = (root) NOPASSWD: /target/BCF_FILES_FOR_NEW_ENC/00/installer
