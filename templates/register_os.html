@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="static/bootstrap-datepicker.min.css" />
+  <script src="static/menu/jquery-1.11.1.min.js"></script>
+  <link href="static/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link href="static/menu/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="static/menu/bootstrap.min.js"></script>
+  <link href="static/menu/custom.css" rel="stylesheet">
+  <style>
+    .form-control {
+      display: block;
+      width:100%;
+      height: 34px;
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 1.42857143;
+      color: #555;
+      background-color: #fff;
+      background-image: none;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+      box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+      -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+      -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+      transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">AVA Communication Co</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{currentuser}}<span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <li><a href="/user_settings">Settings</a></li>
+      <li><a href="/help">Help</a></li>
+      <li role="separator" class="divider"></li>
+      <li><a href="/logout">Sign Out</a></li>
+    </ul>
+    </li>
+    </ul>
+    </div>
+  </div>
+</nav>
+
+ <div class="col-md-3">
+  <div id="sidenav1">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sideNavbar"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+    </div>
+    <div class="collapse navbar-collapse" id="sideNavbar">
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a href="/home"><span class="glyphicon glyphicon-home"></span>Home</a> </h4>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-cog"> </span>Configurations<span class="caret"></span></a> </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse">
+            <ul class="list-group">
+            <li><a href="/users" class="navlink">Define a User</a></li>
+            <li><a href="/user_settings" class="navlink">User settings</a></li>
+            <li><a href="/hw_list" class="navlink">Add a new hardware</a></li>
+             </ul>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-plus"> </span>Images<span class="caret"></span></a> </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse in">
+            <ul class="list-group">
+              <li><a href="/enternew" class="navlink">Register Image</a></li>
+              <li><a href="/list" class="navlink">Generate Image</a></li>
+            </ul>
+          </div>
+        </div>
+
+         <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-list-alt"> </span>Applications<span class="caret"></span></a> </h4>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li><a href="/applications64" class="navlink">64Bit Applications</a></li>
+              <li><a href="/applications32" class="navlink">32Bit Applications</a></li>
+              <li><a href="/gitlab_gen" class="navlink">Generate from GitLab</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-list-alt"> </span>Reports<span class="caret"></span></a> </h4>
+          </div>
+          <div id="collapseFour" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li><a href="/report" class="navlink">Get Reports</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a> </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <div class="container" style="padding-left: 20%;padding-top: 20px;">
+    <h3>Register a new image</h3>
+    <form name="Form" action = "{{ url_for('addrec') }}" onsubmit="return validateForm(this)" method = "POST">
+      <div class="from-group">
+        <label for="serial">Serial Number:</label>
+        <input type = "text" class="form-control" pattern="([0-9]{9}-[0-9]{9})" id="serial"  name = "serial" placeholder="000019251-xxxxxxxxx" required /><br><br>
+        <label for="date">Date:</label>
+        <input type = "text" class="form-control" pattern="([0-9]{4}\/[0-9]{1,2}\/[0-9]{1,2})" id="datepicker2" name = "date"  required /><br><br>
+        <label for="type">Device Type:</label>
+        <select class="form-control" id="type" name="type" required >
+          <option value="SoftSwitch">SoftSwitch</option>
+          <option value="BCF">BCF</option>
+          <option value="RACF">RACF</option>
+          <option value="SBC">SBC</option>
+          <option value="PBX">PBX</option>
+          <option value="PBX">NMS</option>
+        </select><br>
+        <label for="owner">Owner:</label>
+        <input type = "text" class="form-control" id="owner" name = "owner" placeholder="Mokhaberate Tehran" required /><br><br>   
+        <label for="hardware">Hardware info:</label>
+        <select class="form-control" id="hardware" name="hardware" required >
+          {% for row in rows %}
+          <option value="{{row["model"]}}, {{row["cpu"]}}, {{row["ram"]}}, {{row["storage1"]}} , {{row["storage2"]}}">{{row["model"]}}, {{row["cpu"]}}, {{row["ram"]}}, {{row["storage1"]}}, {{row["storage2"]}}</option>
+          {% endfor %}
+        </select><br>
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="type" name = "description" placeholder="something about the device, os, customer and ..." ></textarea><br>
+        <button type = "submit" class="btn btn-success" value = "submit">Register</button><br>
+    </form>
+  </div>
+
+
+  <script src="static/jquery-1.8.2.min.js"></script>
+  <script src="static/bootstrap-datepicker.min.js"></script>
+  <script src="static/bootstrap-datepicker.fa.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#datepicker2").datepicker({
+        showOtherMonths: true,
+        selectOtherMonths: true,
+        isRTL: true,
+        dateFormat: "yy/m/d"
+     });
+     });
+  </script>
+</body>
+
+

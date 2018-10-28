@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+</head>
+  <script src="static/menu/jquery-1.11.1.min.js"></script>
+  <link href="static/menu/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="static/menu/bootstrap.min.js"></script>
+  <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+  <link href="static/menu/custom.css" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">AVA Communication Co</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{currentuser}}<span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <li><a href="/user_settings">Settings</a></li>
+      <li><a href="/help">Help</a></li>
+      <li role="separator" class="divider"></li>
+      <li><a href="/logout">Sign Out</a></li>
+    </ul>
+    </li>
+    </ul>
+    </div>
+  </div>
+</nav>
+
+  <div class="col-md-3">
+  <div id="sidenav1">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sideNavbar"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+    </div>
+    <div class="collapse navbar-collapse" id="sideNavbar">
+      <div class="panel-group" id="accordion">
+	  
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a href="/home"><span class="glyphicon glyphicon-home"></span>Home</a> </h4>
+          </div>
+        </div>
+		
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-cog"> </span>Configurations<span class="caret"></span></a> </h4>
+          </div>
+          <!-- Note: By adding "in" after "collapse", it starts with that particular panel open by default; remove if you want them all collapsed by default -->
+          <div id="collapseOne" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li><a href="/users" class="navlink">Define a User</a></li>
+              <li><a href="/user_settings" class="navlink">User settings</a></li>
+              <li><a href="/hw_list" class="navlink">Add a new hardware</a></li>
+            </ul>
+          </div>
+        </div>
+		
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-plus"> </span>Images<span class="caret"></span></a> </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li><a href="/enternew" class="navlink">Register Image</a></li>
+              <li><a href="/list" class="navlink">Generate Image</a></li>
+            </ul>
+          </div>
+        </div>
+	
+         <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-list-alt"> </span>Applications<span class="caret"></span></a> </h4>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li><a href="/applications64" class="navlink">64Bit Applications</a></li>
+              <li><a href="/applications32" class="navlink">32Bit Applications</a></li>
+              <li><a href="/gitlab_gen" class="navlink">Generate from GitLab</a></li>
+            </ul>
+          </div>
+        </div>
+	
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-list-alt"> </span>Reports<span class="caret"></span></a> </h4>
+          </div>
+          <div id="collapseFour" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li><a href="/report" class="navlink">Get Reports</a></li>
+            </ul>
+          </div>
+        </div>
+	
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a> </h4>
+          </div>
+        </div>
+		
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  <div class="container" style="padding-left: 20%;padding-top: 20px;">
+    <h2>AVA Communication Co.</h2>
+    <h4>This is a new platform to generate 64bit and 32bit images, firmware, app and modules for AVA appliances. </h4>
+    <h4>Generating applications from GitLab added in version 2.0 </h4>
+    <br> 
+
+<table   class="table table-striped table-hover">
+     <thead>
+       <td>System Status</td>
+     </thead>
+     <tr>
+       <td>Total images:</td>
+       <td>{{total_images}}</td>
+     </tr>
+     <tr> 
+       <td>Disk Usage:</td>
+       <td>{{space}}</td>
+     </tr>
+     <tr>
+       <td>Software Version:</td>
+       <td>2.0</td>
+     </tr>
+     <tr>
+       <td>Your IP:</td>
+       <td>{{ip}}</td>
+     </tr>
+   </table>
+
+
+ </div>
+  
+</body>
